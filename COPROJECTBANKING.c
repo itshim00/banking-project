@@ -28,7 +28,7 @@ float interest(float t,float amount,int rate)
 }
 void fordelay(int j)
 {   
-	int i,k;
+    int i,k;
     for(i=0;i<j;i++)
         k=i;
 }
@@ -48,7 +48,7 @@ void new_acc()
     {
         if (check.acc_no==add.acc_no)
     	{
-			printf("Account no. already in use!");
+	    printf("Account no. already in use!");
             fordelay(1000000000);
             goto account_no;
         }
@@ -102,9 +102,9 @@ void view_list()
     fclose(view);
     if (test==0)
     {   
-		system("cls");
+	system("cls");
         printf("\nNO RECORDS!!\n");
-	}
+    }
     view_list_invalid:
      printf("\n\nEnter 1 to go to the main menu and 0 to exit:");
         scanf("%d",&main_exit);
@@ -136,7 +136,7 @@ void edit()
             system("cls");
             if(choice==1)
             {
-				printf("Enter the new address:");
+		printf("Enter the new address:");
                 scanf("%s",upd.address);
                 fprintf(newrec,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d\n",add.acc_no,add.name,add.dob.month,add.dob.day,add.dob.year,add.age,upd.address,add.citizenship,add.phone,add.acc_type,add.amt,add.deposit.month,add.deposit.day,add.deposit.year);
                 system("cls");
@@ -161,39 +161,39 @@ void edit()
     remove("record.txt");
     rename("new.txt","record.txt");
 	if(test!=1)
-    {   
+    	{   
 		system("cls");
-        printf("\nRecord not found!!\a\a\a");
-        edit_invalid:
-        printf("\nEnter 0 to try again,1 to return to main menu and 2 to exit:");
-        scanf("%d",&main_exit);
-        system("cls");
-        if (main_exit==1)
-            menu();
-        else if (main_exit==2)
-            close();
-        else if(main_exit==0)
-            edit();
-        else
-        {
-			printf("\nInvalid!\a");
-            goto edit_invalid;
+        	printf("\nRecord not found!!\a\a\a");
+        	edit_invalid:
+        	printf("\nEnter 0 to try again,1 to return to main menu and 2 to exit:");
+        	scanf("%d",&main_exit);
+        	system("cls");
+        	if (main_exit==1)
+        	    menu();
+        	else if (main_exit==2)
+        	    close();
+        	else if(main_exit==0)
+        	    edit();
+        	else
+        	{
+		    printf("\nInvalid!\a");
+        	    goto edit_invalid;
 		}
-    }
-    else
-    {
+    	}
+    	else
+    	{
 		printf("\n\n\nEnter 1 to go to the main menu and 0 to exit:");
-        scanf("%d",&main_exit);
-        system("cls");
-        if (main_exit==1)
-            menu();
-        else
-            close();
+        	scanf("%d",&main_exit);
+       	 	system("cls");
+        	if (main_exit==1)
+        	    menu();
+        	else
+            	    close();
 	}
 }
 void transact()
-{   
-	int choice,test=0;
+{
+    int choice,test=0;
     FILE *old,*newrec;
     old=fopen("record.txt","r");
     newrec=fopen("new.txt","w");
@@ -202,8 +202,8 @@ void transact()
     while (fscanf(old,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d",&add.acc_no,add.name,&add.dob.month,&add.dob.day,&add.dob.year,&add.age,add.address,add.citizenship,&add.phone,add.acc_type,&add.amt,&add.deposit.month,&add.deposit.day,&add.deposit.year)!=EOF)
    {
         if(add.acc_no==transaction.acc_no)
-        {   
-			test=1;
+        {
+	    test=1;
             if(strcmpi(add.acc_type,"fixed1")==0||strcmpi(add.acc_type,"fixed2")==0||strcmpi(add.acc_type,"fixed3")==0)
             {
                 printf("\a\a\a\n\nYOU CANNOT DEPOSIT OR WITHDRAW CASH IN FIXED ACCOUNTS!!!!!");
@@ -228,20 +228,20 @@ void transact()
                 if(add.amt<transaction.amt)
                 {
                 	printf("\nInsufficient Balance.");
-					fprintf(newrec,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d\n",add.acc_no,add.name,add.dob.month,add.dob.day,add.dob.year,add.age,add.address,add.citizenship,add.phone,add.acc_type,add.amt,add.deposit.month,add.deposit.day,add.deposit.year);
-				}
-				else
-				{
-					add.amt-=transaction.amt;
+			fprintf(newrec,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d\n",add.acc_no,add.name,add.dob.month,add.dob.day,add.dob.year,add.age,add.address,add.citizenship,add.phone,add.acc_type,add.amt,add.deposit.month,add.deposit.day,add.deposit.year);
+		}
+		else
+		{
+			add.amt-=transaction.amt;
                 	fprintf(newrec,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d\n",add.acc_no,add.name,add.dob.month,add.dob.day,add.dob.year,add.age,add.address,add.citizenship,add.phone,add.acc_type,add.amt,add.deposit.month,add.deposit.day,add.deposit.year);
                 	printf("\n\nWithdrawn successfully!");
-				}
+		}
             }
         }
         else
         {
     	    fprintf(newrec,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d\n",add.acc_no,add.name,add.dob.month,add.dob.day,add.dob.year,add.age,add.address,add.citizenship,add.phone,add.acc_type,add.amt,add.deposit.month,add.deposit.day,add.deposit.year);
-		}
+	}
    }
    fclose(old);
    fclose(newrec);
@@ -289,10 +289,9 @@ void erase()
    {
         if(add.acc_no!=rem.acc_no)
             fprintf(newrec,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d\n",add.acc_no,add.name,add.dob.month,add.dob.day,add.dob.year,add.age,add.address,add.citizenship,add.phone,add.acc_type,add.amt,add.deposit.month,add.deposit.day,add.deposit.year);
-
         else
         {
-			test++;
+	    test++;
             printf("\nRecord deleted successfully!\n");
         }
    }
@@ -304,29 +303,29 @@ void erase()
         {
             printf("\nRecord not found!!\a\a\a");
             erase_invalid:
-              printf("\nEnter 0 to try again,1 to return to main menu and 2 to exit:");
-              scanf("%d",&main_exit);
-
-                 if (main_exit==1)
-                    menu();
-                else if (main_exit==2)
-                    close();
-                else if(main_exit==0)
-                    erase();
-                else
-                {
-					printf("\nInvalid!\a");
-                    goto erase_invalid;
-				}
+            printf("\nEnter 0 to try again,1 to return to main menu and 2 to exit:");
+            scanf("%d",&main_exit);
+	    if (main_exit==1)
+                menu();
+            else if (main_exit==2)
+                close();
+            else if(main_exit==0)
+                erase();
+            else
+            {	
+	        printf("\nInvalid!\a");
+                goto erase_invalid;
+	    }
         }
     else
-        {printf("\nEnter 1 to go to the main menu and 0 to exit:");
-        scanf("%d",&main_exit);
-        system("cls");
-        if (main_exit==1)
-            menu();
-        else
-            close();
+        {
+	    printf("\nEnter 1 to go to the main menu and 0 to exit:");
+	    scanf("%d",&main_exit);
+	    system("cls");
+	    if (main_exit==1)
+        	menu();
+	    else
+            	close();
         }
 }
 void see()
@@ -340,12 +339,14 @@ void see()
     printf("Do you want to check by\n1.Account no.(preferred)\n2.Name\nEnter your choice:");
     scanf("%d",&choice);
     if (choice==1)
-    {   printf("Enter the account number:");
+    {
+	printf("Enter the account number:");
         scanf("%d",&check.acc_no);
         while (fscanf(ptr,"%d %s %d/%d/%d %d %s %s %lf %s %f %d/%d/%d",&add.acc_no,add.name,&add.dob.month,&add.dob.day,&add.dob.year,&add.age,add.address,add.citizenship,&add.phone,add.acc_type,&add.amt,&add.deposit.month,&add.deposit.day,&add.deposit.year)!=EOF)
         {
             if(add.acc_no==check.acc_no)
-            {   system("cls");
+            {
+		system("cls");
                 test=1;
                 printf("\nAccount NO.:%d\nName:%s \nDOB:%d/%d/%d \nAge:%d \nAddress:%s \nCitizenship No:%s \nPhone number:%.0lf \nType Of Account:%s \nAmount deposited:Rs. %.2f \nDate Of Deposit:%d/%d/%d\n\n",add.acc_no,add.name,add.dob.month,add.dob.day,add.dob.year,add.age,add.address,add.citizenship,add.phone,
                 add.acc_type,add.amt,add.deposit.month,add.deposit.day,add.deposit.year);
@@ -377,13 +378,10 @@ void see()
                         rate=8;
                         intrst=interest(time,add.amt,rate);
                         printf("\n\nYou will get Rs..%.2f as interest on %d of every month",intrst,add.deposit.day);
-
                     }
                  else if(strcmpi(add.acc_type,"current")==0)
                     {
-
                         printf("\n\nYou will get no interest\a\a");
-
                     }
             }
         }
@@ -428,19 +426,20 @@ void see()
                         intrst=interest(time,add.amt,rate);
                         printf("\n\nYou will get Rs..%.2f as interest on %d of every month",intrst,add.deposit.day);
 
-                     }
-                 else if(strcmpi(add.acc_type,"current")==0)
+                    }
+                else if(strcmpi(add.acc_type,"current")==0)
                     {
 
                         printf("\n\nYou will get no interest\a\a");
 
-                     }
+                    }
             }
         }
     }
     fclose(ptr);
     if(test!=1)
-        {   system("cls");
+        {
+	    system("cls");
             printf("\nRecord not found!!\a\a\a");
             see_invalid:
               printf("\nEnter 0 to try again, 1 to return to main menu and 2 to exit:");
@@ -457,13 +456,13 @@ void see()
                         system("cls");
                         printf("\nInvalid!\a");
                         goto see_invalid;
-					}
+		    }
         }
     else
     {
-		printf("\nEnter 1 to go to the main menu and 0 to exit:");
+	printf("\nEnter 1 to go to the main menu and 0 to exit:");
         scanf("%d",&main_exit);
-	}
+    }
     if (main_exit==1)
     {
         system("cls");
@@ -480,8 +479,8 @@ void close1()
     printf("\n\n\n\nThis C Project is developed by Himanshu & Illu!");
 }
 void menu()
-{   
-	int choice;
+{
+    int choice;
     system("cls");
     system("color 9");
     printf("\n\n\t\t\tCUSTOMER ACCOUNT BANKING MANAGEMENT SYSTEM");
@@ -525,7 +524,8 @@ int main()
             menu();
     }
     else
-    {   printf("\n\nWrong password!!\a\a\a");
+    {
+	printf("\n\nWrong password!!\a\a\a");
         login_try:
         printf("\nEnter 1 to try again and 0 to exit:");
         scanf("%d",&main_exit);
@@ -538,14 +538,14 @@ int main()
         {
             system("cls");
             close();
-		}
+	}
         else
         {	
-			printf("\nInvalid!");
+	    printf("\nInvalid!");
             fordelay(1000000000);
             system("cls");
-        	goto login_try;
-		}
+            goto login_try;
 	}
+    }
     return 0;
 }
